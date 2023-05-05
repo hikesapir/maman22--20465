@@ -1,3 +1,4 @@
+#include <stdio.h>
 #define UNDEFINED_VAR printf("\nUndefined complex variable\n")
 #define UNDEFINED_CMD printf("\nUndefined command name\n")
 #define INVALID_PRM printf("\nInvalid parameter – not a number\n")

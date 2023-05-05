@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include "util.h"
 
 void slice(const char *str, char *result, size_t start)
 {

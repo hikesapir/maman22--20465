@@ -1,97 +1,29 @@
 #include <stdio.h>
-#include <ctype.h>
-#include <string.h>
-#include "exceptions.h"
-
-#define arr_length(arr) = sizeof(arr) / sizeof(arr[0])
-#define MAX_PARAMS 3
-
-typedef char Word[20];
-
-typedef struct
-{
-    Word func_name;
-    Word *params;
-} user_input;
-
-int get_line(char *line);
+#include "util.h"
+#include "helpers.h"
 
 int main()
 {
+    char str[100];
+    char func_name[20];
+    Word params[3] = {"Geek", "Geeks", "Geekfor"};
+    int i = 0, last_index, has_err = 0;
 
-    char str[60];
-    int i = 0;
-    char *words;
     while (get_line(str) == 0)
     {
-        printf("line %d >>> %s\n", i, str);
+        printf("\nline %d >>> %s\n", i, str);
         i++;
-    }
-
-    printf("%s", str);
-
-    return 0;
-}
-
-int get_line(char *line)
-{
-    char c;
-    int i = 0;
-    while ((c = getchar()) != '\n' && c != EOF)
-    {
-        // if (c == EOF)
-        //     return 1;
-        // if (isspace(c))
-        //     continue;
-        line[i] = c;
-        i++;
-    }
-    line[i] = '\0';
-    return 0;
-}
-
-int get_formatted_user_input(char *line, user_input *input)
-{
-    int i = 0;
-    int word_idx = 0;
-    int param_idx = 0;
-    int is_func_name = 1;
-    Word word;
-
-    while (line[i] != '\0')
-    {
-        if (param_idx > MAX_PARAMS)
-        {
-            EXTRA_TEXT;
-            return 1;
-        }
-        if (isspace(line[i]))
-        {
-            // get func name
-            if (is_func_name)
-            {
-                word[word_idx] = '\0';
-                word_idx = 0;
-                strcpy(input->func_name, word);
-            }
+        
+        last_index = get_command(str, func_name);
+        if (last_index < 0)
             continue;
-        }
-        else if (line[i] == ',')
-        {
-            if (is_func_name)
-            {
-                return 1;
-            }
-            word[word_idx] = '\0';
-            word_idx = 0;
-            strcpy(input->params[param_idx], word);
-            param_idx++;
+        slice(str, str, last_index);
+        has_err = get_params(str, params);
+        printf("\n\n");
+        if (has_err)
             continue;
-        }
-        word[word_idx] = line[i];
-        i++;
+        printf("func name is: %s\nfirst param is: %s\n", func_name, params[0]);
     }
-    word[word_idx] = '\0';
-    strcpy(input->params[param_idx], word);
+
     return 0;
 }
