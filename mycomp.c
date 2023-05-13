@@ -4,9 +4,9 @@
 
 int main()
 {
-
+    /* initialization */
     char *line, *prms[3], cmd_name[MAX_CMD_LENGTH];
-    int i = 0, last_index, prm_length;
+    int i = 0, last_index, prm_length, is_exit = 0;
     Complex A = {0, 0}, B = {0, 0}, C = {0, 0}, D = {0, 0}, E = {0, 0}, F = {0, 0};
     Complex complex_nums[6];
     complex_nums[0] = A;
@@ -16,9 +16,9 @@ int main()
     complex_nums[6] = E;
     complex_nums[6] = F;
 
-    printf("please enter CMD");
-    /* gets user input*/
-    while (get_line(&line) == 0)
+    /* gets user input */
+    printf("please enter CMD\n");
+    while (is_exit >= 0 && get_line(&line) == 0)
     {
         printf("\nline %d >>> %s\n", i, line);
         i++;
@@ -30,21 +30,19 @@ int main()
         prm_length = get_params(line, prms);
         if (prm_length < 0)
             continue;
-        /*
-                printf("\nrun cmd %s with\n", cmd_name);
-                printf("\nparam 1  %s\n", prms[0]);
-                printf("\nparam 2  %s\n", prms[1]);
-                printf("\nparam 3  %s\n", prms[2]);
-        */
+
         /* run the command */
-        run_cmd(cmd_name, prms, prm_length, complex_nums);
+        is_exit = run_cmd(cmd_name, prms, prm_length, complex_nums);
+        if (is_exit >= 0)
+            printf("please enter CMD\n");
     }
-    printf("\nEXIT!\n");
 
     free(line);
     free(prms[0]);
     free(prms[1]);
     free(prms[2]);
+
+    printf("\nEXIT!\n");
 
     return 0;
 }
