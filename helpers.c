@@ -55,12 +55,13 @@ int get_line(char **line)
 Finds the command name in a given line string
 returns -1 if has an issues otherwise returns the index of the last char
 
-@param *line - the string 
+@param *line - the string
 @param *p_command_name - the string to allocate the command name
 */
 int get_command(char *line, char *p_command_name)
 {
     int i = 0;
+    /* run until reached white space or end of the string*/
     while (!isspace(line[i]) && line[i] != '\0')
     {
         if (i == MAX_CMD_LENGTH)
@@ -80,24 +81,34 @@ int get_command(char *line, char *p_command_name)
     return i;
 }
 
+/*
+Finds the given params in a given line string
+returns -1 if has an issues otherwise returns the param arrray length
+
+@param *line - the string
+@param **p_prms - reference to array to allocate the params
+*/
 int get_params(char *line, char **p_prms)
 {
     int i = 0, prm_size = 0, prm_counter = 0, prm_idx = 0, is_last_comma = 1;
-
+    /* removes white space */
     trim(line);
+
     while (line[i] != '\0')
     {
-
+        /* if its the first char in the string allocate a space */
         if (prm_idx == 0)
         {
             prm_size = ENLARGE_LINE_SIZE(0);
             p_prms[prm_counter] = (char *)malloc(prm_size * sizeof(char));
         }
+        /* if reached the max size realloc a space */
         if (prm_idx == prm_size)
         {
             prm_size = ENLARGE_LINE_SIZE(prm_size);
             CHAR_REALLOC(p_prms[prm_counter], prm_size);
         }
+        /* if reached a comma move the next param =*/
         if (line[i] == ',')
         {
             if (i == 0)
@@ -142,13 +153,21 @@ int get_params(char *line, char **p_prms)
     return prm_counter;
 }
 
+/*
+returns NULL if has an issues otherwise returns the reference to the required complex number
+
+@param *comp_name - the complex's name
+@param *nums - array of complex numbers
+*/
 Complex *get_complex(char *comp_name, Complex *nums)
 {
     size_t length = strlen(comp_name);
 
+    /* if the length of the complex name is biger then 1 prints exception */
     if (length > 1)
     {
         UNDEFINED_VAR;
+        return NULL;
     }
 
     switch (comp_name[0])
@@ -172,8 +191,20 @@ Complex *get_complex(char *comp_name, Complex *nums)
     }
 }
 
+/*
+Execute the command with the given params
+returns 1 if has an issues
+returns -1 if the command is stop
+returns 0 if successfully Executed
+
+@param *cmd_name - the command's name
+@param **prms - the params
+@param *prm_length - the length of params array
+@param *nums - array of complex numbers
+*/
 int run_cmd(char *cmd_name, char **prms, int prm_length, Complex *nums)
 {
+    /* initialization */
     int i;
     Complex *c1, *c2;
     double d1, d2;
@@ -190,6 +221,7 @@ int run_cmd(char *cmd_name, char **prms, int prm_length, Complex *nums)
         {"stop", NULL, 0, NONE},
         {"not_valid", NULL, -1, -1}};
 
+    /* search for command */
     for (i = 0; commands[i].arg_length >= 0; i++)
     {
         if (!strcmp(cmd_name, commands[i].name))
@@ -197,12 +229,13 @@ int run_cmd(char *cmd_name, char **prms, int prm_length, Complex *nums)
             break;
         }
     }
-
+    /* if the arg length is kess then 0 its not valid command */
     if (commands[i].arg_length < 0)
     {
         UNDEFINED_CMD;
         return 1;
     }
+    /* validate the params */
     if (commands[i].arg_length < prm_length)
     {
         EXTRA_TEXT;
@@ -274,6 +307,8 @@ int run_cmd(char *cmd_name, char **prms, int prm_length, Complex *nums)
 }
 
 /* utils */
+
+/*removes whitespace from a string */
 void trim(char *s)
 {
     int i = 0, j = 0;
@@ -292,11 +327,13 @@ void trim(char *s)
     strcpy(s, ptr);
 }
 
+/* copies the string pointed by source to the destination from specific index*/
 void slice(char *str, char *result, size_t start)
 {
     strcpy(result, str + start);
 }
 
+/* checks a given string is a number */
 int is_num(char *str)
 {
     int len;
