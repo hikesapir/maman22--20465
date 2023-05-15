@@ -34,7 +34,7 @@ int main()
         /* run the command */
         is_exit = run_cmd(cmd_name, prms, prm_length, complex_nums);
         if (is_exit >= 0)
-            printf("please enter CMD\n");
+            printf("\nplease enter CMD\n");
     }
 
     free(line);

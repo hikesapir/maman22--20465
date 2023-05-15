@@ -90,9 +90,8 @@ returns -1 if has an issues otherwise returns the param arrray length
 */
 int get_params(char *line, char **p_prms)
 {
-    int i = 0, prm_size = 0, prm_counter = 0, prm_idx = 0, is_last_comma = 1;
-    /* removes white space */
-    trim(line);
+    int i = 0, prm_size = 0, prm_counter = 0, prm_idx = 0;
+    int is_first_char = TRUE, is_last_comma = TRUE, is_last_space = FALSE;
 
     while (line[i] != '\0')
     {
@@ -111,7 +110,7 @@ int get_params(char *line, char **p_prms)
         /* if reached a comma move the next param =*/
         if (line[i] == ',')
         {
-            if (i == 0)
+            if (is_first_char)
             {
                 ILLEGAL_COMMA;
                 return -1;
@@ -130,11 +129,26 @@ int get_params(char *line, char **p_prms)
             CHAR_REALLOC(p_prms[prm_counter], prm_idx);
             prm_idx = 0;
             prm_counter++;
-            is_last_comma = 1;
+            is_last_comma = TRUE;
+            is_last_space = FALSE;
             i++;
             continue;
         }
-        is_last_comma = 0;
+        /* skip  white space */
+        if (isspace(line[i]))
+        {
+            is_last_space = TRUE;
+            i++;
+            continue;
+        }
+        if (is_last_space && !is_last_comma)
+        {
+            MISS_COMMA;
+            return -1;
+        }
+        is_first_char = FALSE;
+        is_last_comma = FALSE;
+        is_last_space = FALSE;
         p_prms[prm_counter][prm_idx] = line[i];
         prm_idx++;
         i++;
@@ -152,6 +166,7 @@ int get_params(char *line, char **p_prms)
 
     return prm_counter;
 }
+
 
 /*
 returns NULL if has an issues otherwise returns the reference to the required complex number
@@ -308,25 +323,6 @@ int run_cmd(char *cmd_name, char **prms, int prm_length, Complex *nums)
 
 /* utils */
 
-/*removes whitespace from a string */
-void trim(char *s)
-{
-    int i = 0, j = 0;
-    char ptr[200];
-
-    while (s[i] != '\0')
-    {
-        if (!isspace(s[i]))
-        {
-            ptr[j] = s[i];
-            j++;
-        }
-        i++;
-    }
-    ptr[j] = '\0';
-    strcpy(s, ptr);
-}
-
 /* copies the string pointed by source to the destination from specific index*/
 void slice(char *str, char *result, size_t start)
 {
@@ -341,3 +337,4 @@ int is_num(char *str)
     int ret = sscanf(str, "%f %n", &ignore, &len);
     return ret && len == strlen(str);
 }
+

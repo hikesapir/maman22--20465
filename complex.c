@@ -19,7 +19,8 @@ void read_comp(Complex *comp, double real, double imaginary)
 void print_comp(Complex comp)
 {
     char sign = comp.imaginary < 0 ? '-' : '+';
-    printf("%f %c (%f)i\n", comp.real, sign, comp.imaginary);
+    double img = comp.imaginary < 0 ? comp.imaginary * (-1): comp.imaginary;
+    printf("%f %c (%f)i\n", comp.real, sign, img);
 }
 
 /* Prints the sum of two complex numbers

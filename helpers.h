@@ -1,6 +1,8 @@
 #include "complex.h"
 #define MAX_PARAMS 3
 #define MAX_CMD_LENGTH 20
+#define TRUE 1
+#define FALSE 0
 #define ENLARGE_LINE_SIZE(SIZE) (SIZE) + 20
 #define CHAR_REALLOC(PTR, SIZE)                            \
     (PTR) = (char *)realloc((PTR), (SIZE) * sizeof(char)); \
@@ -60,11 +62,10 @@ returns 0 if successfully Executed
 int run_cmd(char *cmd_name, char **prms, int prm_length, Complex *nums);
 
 /* utils */
-/*removes whitespace from a string */
-void trim(char *s);
 
 /* copies the string pointed by source to the destination from specific index*/
 void slice(char *str, char *result, size_t start);
 
 /* checks a given string is a number */
 int is_num(char *str);
+
