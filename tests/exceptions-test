@@ -1,0 +1,14 @@
+print_comp 5
+print_comp ABC
+please_do_it_now_read_comp A, 5
+READ_COMP B, 6,5
+read_comp A , B, 6
+mult_comp_real B ,C
+read_comp A , 6
+add_comp A,C,B,D
+sub_comp D,C,
+stop A
+mult_comp_comp F D
+read_comp E, , 3
+mult_comp_img, F, 2.13
+abs_comp   ,D

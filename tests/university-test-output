@@ -1,0 +1,195 @@
+please enter CMD
+
+line 0 >>> read_comp G, 3.1, 6.5
+
+Undefined complex variable
+
+please enter CMD
+
+line 1 >>> read_comp a, 3.1, 6.5
+
+Undefined complex variable
+
+please enter CMD
+
+line 2 >>> do_it A, B 
+
+Undefined command name
+
+please enter CMD
+
+line 3 >>> Add_Comp A, C 
+
+Undefined command name
+
+please enter CMD
+
+line 4 >>> read_comp A, 3.5, xyz
+
+Invalid parameter – not a number
+
+please enter CMD
+
+line 5 >>> read_comp A, 3.5
+
+Missing parameter
+
+please enter CMD
+
+line 6 >>> read_comp A, 3.5, -3,
+
+Extraneous text after end of command
+
+line 7 >>> add_comp B
+
+Missing parameter
+
+please enter CMD
+
+line 8 >>> print_comp C, D
+
+Extraneous text after end of command
+
+please enter CMD
+
+line 9 >>> sub_comp F, , D
+
+Multiple consecutive commas
+
+line 10 >>> mult_comp_comp F D
+
+Missing comma
+
+line 11 >>> mult_comp_real, A, 2.5
+
+Illegal comma
+
+line 12 >>> mult_comp_img A, B
+
+Invalid parameter – not a number
+
+please enter CMD
+
+line 13 >>> abs_comp
+
+Missing parameter
+
+please enter CMD
+
+line 14 >>> abs_comp 2.5
+
+Undefined complex variable
+
+please enter CMD
+
+line 15 >>> stop A
+
+Extraneous text after end of command
+
+please enter CMD
+
+line 16 >>> print_comp A
+0.000000 + (0.000000)i
+
+please enter CMD
+
+line 17 >>> print_comp B
+0.000000 + (0.000000)i
+
+please enter CMD
+
+line 18 >>> print_comp C
+0.000000 + (0.000000)i
+
+please enter CMD
+
+line 19 >>> read_comp A, 45.1, -23.75
+
+please enter CMD
+
+line 20 >>> print_comp A
+45.100000 - (23.750000)i
+
+please enter CMD
+
+line 21 >>> read_comp B, 54.2, 3.56
+
+please enter CMD
+
+line 22 >>> print_comp B
+54.200000 + (3.560000)i
+
+please enter CMD
+
+line 23 >>> read_comp C, 0, -1
+
+please enter CMD
+
+line 24 >>> print_comp C
+0.000000 - (1.000000)i
+
+please enter CMD
+
+line 25 >>> add_comp A, B
+99.300000 - (20.190000)i
+
+please enter CMD
+
+line 26 >>> sub_comp C, A
+-45.100000 + (22.750000)i
+
+please enter CMD
+
+line 27 >>> sub_comp B, B
+0.000000 + (0.000000)i
+
+please enter CMD
+
+line 28 >>> sub_comp D, A
+-45.100000 + (23.750000)i
+
+please enter CMD
+
+line 29 >>> mult_comp_real A, 2.51
+113.201000 - (59.612500)i
+
+please enter CMD
+
+line 30 >>> mult_comp_img A, -2.564
+-60.895000 - (115.636400)i
+
+please enter CMD
+
+line 31 >>> mult_comp_comp A, B
+2528.970000 + (2359.870000)i
+
+please enter CMD
+
+line 32 >>> mult_comp_comp E , C
+-0.000000 + (0.000000)i
+
+please enter CMD
+
+line 33 >>> abs_comp A
+50.971291
+
+please enter CMD
+
+line 34 >>> abs_comp B
+54.316789
+
+please enter CMD
+
+line 35 >>> abs_comp C
+1.000000
+
+please enter CMD
+
+line 36 >>> abs_comp F 
+0.000000
+
+please enter CMD
+
+line 37 >>> stop
+
+EXIT!

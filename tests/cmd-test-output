@@ -1,0 +1,61 @@
+please enter CMD
+
+line 0 >>> read_comp          A    ,     1.456 ,   2.654
+
+please enter CMD
+
+line 1 >>> print_comp A
+1.456000 + (2.654000)i
+
+please enter CMD
+
+line 2 >>> read_comp B, 9, 1
+
+please enter CMD
+
+line 3 >>> print_comp B
+9.000000 + (1.000000)i
+
+please enter CMD
+
+line 4 >>> read_comp C,0.544,1.346
+
+please enter CMD
+
+line 5 >>> add_comp A,   C
+2.000000 + (4.000000)i
+
+please enter CMD
+
+line 6 >>> read_comp D, 14,11
+
+please enter CMD
+
+line 7 >>> sub_comp D, B
+5.000000 + (10.000000)i
+
+please enter CMD
+
+line 8 >>> mult_comp_real E, 2.134
+-0.000000 - (0.000000)i
+
+please enter CMD
+
+line 9 >>> mult_comp_img F, 2.134
+-0.000000 - (0.000000)i
+
+please enter CMD
+
+line 10 >>> mult_comp_comp B,D
+115.000000 + (137.000000)i
+
+please enter CMD
+
+line 11 >>> abs_comp C
+1.451775
+
+please enter CMD
+
+line 12 >>> stop
+
+EXIT!

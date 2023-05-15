@@ -1,0 +1,77 @@
+please enter CMD
+
+line 0 >>> print_comp 5
+
+Undefined complex variable
+
+please enter CMD
+
+line 1 >>> print_comp ABC
+
+Undefined complex variable
+
+please enter CMD
+
+line 2 >>> please_do_it_now_read_comp A, 5
+
+Undefined command name
+
+line 3 >>> READ_COMP B, 6,5
+
+Undefined command name
+
+please enter CMD
+
+line 4 >>> read_comp A , B, 6
+
+Invalid parameter – not a number
+
+please enter CMD
+
+line 5 >>> mult_comp_real B ,C
+
+Invalid parameter – not a number
+
+please enter CMD
+
+line 6 >>> read_comp A , 6
+
+Missing parameter
+
+please enter CMD
+
+line 7 >>> add_comp A,C,B,D
+
+Extraneous text after end of command
+
+please enter CMD
+
+line 8 >>> sub_comp D,C,
+
+Extraneous text after end of command
+
+line 9 >>> stop A
+
+Extraneous text after end of command
+
+please enter CMD
+
+line 10 >>> mult_comp_comp F D
+
+Missing comma
+
+line 11 >>> read_comp E, , 3
+
+Multiple consecutive commas
+
+line 12 >>> mult_comp_img, F, 2.13
+
+Illegal comma
+
+line 13 >>> abs_comp   ,D
+
+Illegal comma
+
+Reached EOF before stop command
+
+EXIT!
